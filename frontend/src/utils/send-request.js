@@ -1,9 +1,8 @@
-import axios from "axios";
 import { getToken } from "./users-service";
 
 //function used to send requests to servers
 // initially set to a get request
-async function sendRequest(url, method = "Get", payload = null) {
+async function sendRequest(url, method = "GET", payload = null) {
  
   const options = { method };
 

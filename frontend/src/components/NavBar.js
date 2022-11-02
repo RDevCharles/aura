@@ -1,48 +1,39 @@
-import { Link } from "react-router-dom";
-import { logout } from "../utils/users-service";
-import useSound from 'use-sound';
-const NavBar = () => {
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+function CollapsibleExample(props) {
   return (
-    <nav class="bg-gray-800">
-      <div class="flex space-x-4">
-        <Link
-          class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-          to="/games"
-        >
-          Dashboard
-        </Link>
-
-        <Link
-          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-          to="/store"
-        >
-          Games
-        </Link>
-        <Link
-          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-          to="/my-games"
-        >
-          Store
-        </Link>
-        <Link
-          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-          to="/profile"
-        >
-          Settings
-        </Link>
-        <Link
-          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-          to="/"
-          onClick={() => {
-            logout();
-            window.location.reload(false);
-          }}
-        >
-          Logout
-        </Link>
-      </div>
-    </nav>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    
+        <Navbar.Brand style={{marginLeft:"2rem"}} href="/">Dashboard</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav  className="me-auto">
+            <Nav.Link href="/games">Games</Nav.Link>
+            
+          </Nav>
+          <Nav style={{marginRight:"2rem"}}>
+            <Nav.Link>
+              Hi:{props.username}
+          </Nav.Link>
+          <NavDropdown style={{marginRight:"2rem"}} title="Settings" id="collasible-nav-dropdown">
+             
+              <NavDropdown.Item href="/profile-settings">
+                Profile Info
+              </NavDropdown.Item>
+          
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Logout
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+   
+    </Navbar>
   );
-};
+}
 
-export default NavBar;
+export default CollapsibleExample;

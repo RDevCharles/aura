@@ -11,3 +11,7 @@ export function login(credentials) {
     return sendRequest("/login","POST", credentials)
 }
 
+export function getEvents() {
+    return sendRequest("/events")
+}
+

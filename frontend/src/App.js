@@ -3,14 +3,16 @@ import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import UserAuth from "./pages/UserAuth";
 import Dashboard from "./pages/Dashboard";
-import Settings from "./pages/Settings";
+import Games from "./pages/Games";
+import ProfileSettings from "./pages/ProfileSettings";
 import { getUser } from "./utils/users-service";
+import AOS from "aos";
+
+AOS.init();
 
 function App() {
   const [user, setUser] = useState(getUser());
   
-  const navigate = useNavigate();
-
   return (
     <div className="App">
       <Routes>
@@ -25,8 +27,12 @@ function App() {
           }
         />
         <Route
-          path="/settings"
-          element={<Settings user={user} />}
+          path="/profile-settings"
+          element={<ProfileSettings user={user} />}
+        />
+        <Route
+          path="/games"
+          element={<Games user={user} />}
         />
       </Routes>
     </div>
