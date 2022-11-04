@@ -36,14 +36,22 @@ const userSchema = new Schema({
     home: { Boolean, default: false },
     food: { Boolean, default: false },
   },
+
   // the interest stream will hold dynamic data like a feed
-  gamesList: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+  purchasedGames: [{ type: Schema.Types.ObjectId, ref: "Game" }],
 
   //the about of spendably tokens a user has to paticipate in the game
   tokens: { type: Number, default: 1000 },
+  tokenReload: { type: Date, default: new Date() },
   alerts:[AlertsModel]
-});
+}, { timestamps: true });
 
+
+
+userSchema.method.addFreeCoins= function (user) {
+  if (this.tokens === 1000) {
+  this.tokens === 1025
+}}
 
 
 //must be pre save (kind of like middleware)

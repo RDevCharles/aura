@@ -17,7 +17,18 @@ async function create(req, res) {
 
 async function login(req, res) {
   try {
+   
     const user = await User.findOne({ email: req.body.email });
+    
+    //checking to see if a week had past. If so give user more tokens
+    let current = new Date().getTime()
+    let past = user.tokenReload.getTime()
+    if (current - past === 604800000) {
+      user.tokenReload = new Date();
+      user.tokens = user.tokens + 50;
+    }
+
+
     if (!user) throw new Error();
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) throw new Error();
@@ -39,10 +50,11 @@ const updateAddress = async (req, res) => {
   });
 };
 
-const pinGame = async (req, res) => {
+const purchaseGame = async (req, res) => {
   let user = await User.findOne({ name: "Ram" });
   const newGame = await Game.create(req.body);
   user.gamesList.push(newGame);
+  user.tokens -= newGame.cost
   res.send(user);
   user.save();
 };
@@ -66,7 +78,7 @@ const deleteGame = async (req, res) => {
 
 module.exports = {
   create,
-  pinGame,
+  purchaseGame,
   updateAddress,
   deleteGame,
   login,

@@ -11,6 +11,7 @@ const isLoggedin = require('./config/isLoggedin');
 
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var gamesRouter = require('./routes/games');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //adjust routers so that gaming api has its own route.
 app.use(require('./config/checkToken'));
 app.use('/', usersRouter);
+app.use("/games",/*isLoggedin,*/ gamesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
