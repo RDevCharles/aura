@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { logout } from "../utils/users-service";
 
 function CollapsibleExample(props) {
   return (
@@ -25,7 +26,10 @@ function CollapsibleExample(props) {
               </NavDropdown.Item>
           
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item onClick={function () {
+              logout();
+              window.location.reload();
+            } } href="#action/3.4">
                 Logout
               </NavDropdown.Item>
             </NavDropdown>

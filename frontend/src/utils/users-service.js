@@ -31,6 +31,8 @@ export function getUser() {
 //function to logout, will redirect on the frontend
 export function logout() {
   localStorage.removeItem("token");
+
+
 }
 
 export async function login(credentials) {
