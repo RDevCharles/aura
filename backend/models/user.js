@@ -52,13 +52,44 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-userSchema.methods.burnTokens = function (cost) {
-  this.tokens -= cost;
+userSchema.methods.burnTokens = function (cost, gameResId) {
+  // this helper function helps to see if the game is already in the purchased games list
 
+  function gameIdCheck(gameId) {
+    return gameId == gameResId;
+  }
+
+  let result = this.purchasedGames.filter(gameIdCheck);
+
+  //if the list already has the game id inside return null
+  //posibly change that to return some sort of json object
+
+  if (result) return null;
+
+  //if the dont have enough for game do nothing
+  //posibly change that to return some sort of json object
+  if (cost > this.token) return null;
 
   this.tokens -= cost;
   return this.save();
 };
+
+userSchema.methods.saveGame = function (gameResId) {
+  function gameIdCheck(gameId) {
+    return gameId == gameResId;
+  }
+
+  let result = this.purchasedGames.filter(gameIdCheck);
+
+  //if the list already has the game id inside return null
+  //posibly change that to return some sort of json object
+
+  if (result) return null;
+
+  //add game to list
+  this.purchasedGames.push(gameResId)
+  
+}
 
 //must be pre save (kind of like middleware)
 userSchema.pre("save", function (next) {

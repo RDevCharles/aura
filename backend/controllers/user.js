@@ -50,9 +50,12 @@ const updateAddress = async (req, res) => {
   });
 };
 
+//function for taking tokens away from 
 const burn = async (req, res) => {
   let user = await User.findOne({ name: "charles" });
+  // replace 25 with req.body.cost
   user.burnTokens(25)
+  user.savGame(/* here goes the game id */)
   res.send("purchased");
  
 };
