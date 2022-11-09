@@ -4,55 +4,61 @@ const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
-const AlertsModel = new Schema({
-  message: { type: String, required: true },
-  seen: { type: Boolean, default: false },
-}, { timestamp: true });
-
-const userSchema = new Schema({
-  username: { type: String, unique: true, required: true },
-  email: { type: String, unique: true, required: true },
-  age: { type: Number, required: true },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
+const AlertsModel = new Schema(
+  {
+    message: { type: String, required: true },
+    seen: { type: Boolean, default: false },
   },
-  name: { type: String, required: true },
-  address: {
-    street: String,
-    aptNumber: String,
-    zipCode: Number,
-    state: String,
-    city: String,
+  { timestamp: true }
+);
+
+const userSchema = new Schema(
+  {
+    username: { type: String, unique: true, required: true },
+    email: { type: String, unique: true, required: true },
+    age: { type: Number, required: true },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    name: { type: String, required: true },
+    address: {
+      street: String,
+      aptNumber: String,
+      zipCode: Number,
+      state: String,
+      city: String,
+    },
+    signed: { type: Boolean, default: true },
+    interests: {
+      fashion: { Boolean, default: false },
+      health: { Boolean, default: false },
+      education: { Boolean, default: false },
+      entertainment: { Boolean, default: false },
+      tech: { Boolean, default: false },
+      home: { Boolean, default: false },
+      food: { Boolean, default: false },
+    },
+
+    // the interest stream will hold dynamic data like a feed
+    purchasedGames: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+
+    //the about of spendably tokens a user has to paticipate in the game
+    tokens: { type: Number, default: 1000 },
+    tokenReload: { type: Date, default: new Date() },
+    alerts: [AlertsModel],
   },
-  signed: { type: Boolean, default: true },
-  interests: {
-    fashion: { Boolean, default: false },
-    health: { Boolean, default: false },
-    education: { Boolean, default: false },
-    entertainment: { Boolean, default: false },
-    tech: { Boolean, default: false },
-    home: { Boolean, default: false },
-    food: { Boolean, default: false },
-  },
+  { timestamps: true }
+);
 
-  // the interest stream will hold dynamic data like a feed
-  purchasedGames: [{ type: Schema.Types.ObjectId, ref: "Game" }],
-
-  //the about of spendably tokens a user has to paticipate in the game
-  tokens: { type: Number, default: 1000 },
-  tokenReload: { type: Date, default: new Date() },
-  alerts:[AlertsModel]
-}, { timestamps: true });
+userSchema.methods.burnTokens = function (cost) {
+  this.tokens -= cost;
 
 
-
-userSchema.method.addFreeCoins= function (user) {
-  if (this.tokens === 1000) {
-  this.tokens === 1025
-}}
-
+  this.tokens -= cost;
+  return this.save();
+};
 
 //must be pre save (kind of like middleware)
 userSchema.pre("save", function (next) {

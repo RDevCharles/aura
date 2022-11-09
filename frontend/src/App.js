@@ -1,14 +1,13 @@
 import "./App.css";
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import UserAuth from "./pages/UserAuth";
 import Dashboard from "./pages/Dashboard";
 import Games from "./pages/Games";
+import GameDetail from "./pages/GameDetail"
 import ProfileSettings from "./pages/ProfileSettings";
 import { getUser } from "./utils/users-service";
-import AOS from "aos";
 
-AOS.init();
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -34,6 +33,9 @@ function App() {
           path="/games"
           element={<Games user={user} />}
         />
+        <Route
+          path="/games/:id/"
+          element={<GameDetail user={user} />}/>
       </Routes>
     </div>
   );

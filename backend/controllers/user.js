@@ -50,13 +50,11 @@ const updateAddress = async (req, res) => {
   });
 };
 
-const purchaseGame = async (req, res) => {
-  let user = await User.findOne({ name: "Ram" });
-  const newGame = await Game.create(req.body);
-  user.gamesList.push(newGame);
-  user.tokens -= newGame.cost
-  res.send(user);
-  user.save();
+const burn = async (req, res) => {
+  let user = await User.findOne({ name: "charles" });
+  user.burnTokens(25)
+  res.send("purchased");
+ 
 };
 
 const deleteGame = async (req, res) => {
@@ -78,7 +76,7 @@ const deleteGame = async (req, res) => {
 
 module.exports = {
   create,
-  purchaseGame,
+  burn,
   updateAddress,
   deleteGame,
   login,

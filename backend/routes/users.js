@@ -15,7 +15,7 @@ router.get("/my-games", userCntrl.create);
 //http://localhost:3001/my-games
 router.get("/my-games", userCntrl.deleteGame);
 //http://localhost:3001/games
-router.post("/games", userCntrl.purchaseGame);
+router.post("/games", userCntrl.burn);
 //http://localhost:3001/profile/update-address
 router.put("/profile/update-address", userCntrl.updateAddress);
 

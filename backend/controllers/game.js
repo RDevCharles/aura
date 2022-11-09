@@ -20,29 +20,11 @@ const create = (req, res) => {
   }
 };
 
-async function purchaseGame(req, res) {
-  console.log("hello from cntrl")
+async function purchGame(req, res) {
+  //console.log("hello from cntrl")
   let user = await User.findOne({ username: req.body.username });
-  //should send userid over params to avoud another "api call"
-//   let gameInstance = await Game.findOne({ title: req.body.title });
+  user.purchaseGame(req.body.cost, req.params.id);
 
-//   //if the game is not in gameslist already the subtract tokens and add it to games list
-//   //otherwise do nothing
-//   user.purchasedGames
-//     .findOneById(req.params.id)
-//     .then(async function (game) {
-//       if (game) {
-//         return null;
-//       } else {
-//         const newGame = await Game.create(req.body);
-//         user.gamesList.push(newGame);
-//         res.send(user);
-//         user.save();
-//       }
-//     })
-//     .catch(function (err) {
-//       return null;
-//     });
 }
 
 const pinGame = async (req, res) => {};
@@ -50,5 +32,5 @@ const pinGame = async (req, res) => {};
 module.exports = {
   index,
   create,
-  purchaseGame,
+  purchGame,
 };
