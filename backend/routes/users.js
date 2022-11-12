@@ -16,6 +16,9 @@ router.get("/my-games", userCntrl.create);
 router.get("/my-games", userCntrl.deleteGame);
 //http://localhost:3001/games
 router.post("/games", userCntrl.burn);
+//add more tokens to account after ad is viewed
+//http://localhost:3001/games/reup
+router.post("/games/reup", userCntrl.reUp);
 //http://localhost:3001/profile/update-address
 router.put("/profile/update-address", userCntrl.updateAddress);
 

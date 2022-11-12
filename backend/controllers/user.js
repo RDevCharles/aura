@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const Game = require("../models/gameTitle");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -60,6 +59,19 @@ const burn = async (req, res) => {
  
 };
 
+async function reUp() {
+
+  try {
+    let user = await User.findOne({ name: "Charles" });
+    user.afterAdReUp(50)
+    
+  } catch (err) {
+    return err.message;
+  }
+
+  
+}
+
 const deleteGame = async (req, res) => {
   let user = await User.findOne({ name: "Ram" });
   user.deleteOne({ gamesList: "6357fd92644fab3340662fdf" }).then((data) => {
@@ -83,4 +95,5 @@ module.exports = {
   updateAddress,
   deleteGame,
   login,
+  reUp
 };

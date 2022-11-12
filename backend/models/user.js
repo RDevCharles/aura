@@ -69,8 +69,13 @@ userSchema.methods.burnTokens = function (cost, gameResId) {
   //if the dont have enough for game do nothing
   //posibly change that to return some sort of json object
   if (cost > this.token) return null;
-
   this.tokens -= cost;
+  return this.save();
+};
+
+//function to add tokens to user account after an ad was viewed
+userSchema.methods.afterAdReUp = function (cost) {
+  this.tokens += cost;
   return this.save();
 };
 
@@ -87,9 +92,8 @@ userSchema.methods.saveGame = function (gameResId) {
   if (result) return null;
 
   //add game to list
-  this.purchasedGames.push(gameResId)
-  
-}
+  this.purchasedGames.push(gameResId);
+};
 
 //must be pre save (kind of like middleware)
 userSchema.pre("save", function (next) {
