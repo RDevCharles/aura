@@ -1,6 +1,6 @@
 # What is Aura
 
-### A platform a dual purpose
+### A platform with a dual purpose
 
 A gaming platform that allows users to kill time and win prizes from their favorite brands.
 
