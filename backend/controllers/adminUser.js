@@ -1,4 +1,4 @@
-const userAdmin = require("../models/userAdmin");
+const userAdmin = require("../models/adminUser");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -65,7 +65,7 @@ async function getUserData(req, res) {
 }
 
 async function getSiteVisits(req, res) {
-    
+
 }
 
 //filter and remove game
@@ -82,5 +82,6 @@ module.exports = {
   updateAddress,
   create,
     login,
-  getUserData
+    getUserData,
+    getSiteVisits
 };

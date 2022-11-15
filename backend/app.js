@@ -12,6 +12,7 @@ const isLoggedin = require('./config/isLoggedin');
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var gamesRouter = require('./routes/games');
+var adminUserRouter = require('./routes/adminUser');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./config/checkToken'));
 app.use('/', usersRouter);
 app.use("/games",/*isLoggedin,*/ gamesRouter);
+app.use("/admin",/*isLoggedin,*/ adminUserRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
