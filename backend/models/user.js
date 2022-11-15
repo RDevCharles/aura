@@ -52,6 +52,10 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+///////////////////////////////////////////////////////////////////////////////////////
+//                              Game play methods                                    //
+///////////////////////////////////////////////////////////////////////////////////////
+
 userSchema.methods.burnTokens = function (cost, gameResId) {
   // this helper function helps to see if the game is already in the purchased games list
 
@@ -94,6 +98,16 @@ userSchema.methods.saveGame = function (gameResId) {
   //add game to list
   this.purchasedGames.push(gameResId);
 };
+
+
+
+
+
+
+
+
+
+
 
 //must be pre save (kind of like middleware)
 userSchema.pre("save", function (next) {
