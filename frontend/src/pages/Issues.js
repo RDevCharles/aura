@@ -1,19 +1,25 @@
+import NavBar from "../components/ui/NavBar";
 import React, { useRef, useState } from "react";
-import AdminCharts from "../components/admin/AdminCharts";
+import IssueTabs from "../components/admin/IssueTabs";
 
-const AdminDashboard = (props) => {
+const Issues = (props) => {
   return (
     <div
       style={{
         height: "100vh",
+        backgroundColor: "#edf5f5",
         overFlow: "hidden",
       }}
     >
+      <IssueTabs />
+      
       <div style={{ display: "flex", alignItems: "center" }}>
-        <AdminCharts />
+     
+
+
       </div>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default Issues;

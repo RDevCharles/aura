@@ -12,7 +12,7 @@ const Dashboard = (props) => {
         overFlow: "hidden",
       }}
     >
-      <NavBar username={props.user.name} />
+      
 
       <div
         style={{
