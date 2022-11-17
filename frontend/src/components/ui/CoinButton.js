@@ -13,7 +13,7 @@ export default function CoinButton(props) {
         }}
        
       >
-         <img style={{ height:"2rem", marginRight:".5rem"}} src={require("../assets/images/coins.png")}/>
+         <img style={{ height:"2rem", marginRight:".5rem"}} src={require("../../assets/images/coins.png")}/>
             <p style={{ color: "black", fontWeight: "bold", position:"relative", top:"25%" }}>{props.cost}</p>
       </div>
     )

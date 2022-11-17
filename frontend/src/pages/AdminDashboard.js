@@ -1,9 +1,8 @@
-import NavBar from "../components/ui/NavBar";
-import EventList from "../components/events/EventList";
-import MyGamesList from "../components/games/MyGamesList";
+import NavBar from "../components/NavBar";
 import React, { useRef, useState } from "react";
 
-const Dashboard = (props) => {
+
+const AdminDashboard = (props) => {
   return (
     <div
       style={{
@@ -37,12 +36,9 @@ const Dashboard = (props) => {
           {props.user.tokens}
         </p>
       </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <EventList />
-        <MyGamesList />
-      </div>
+      <div style={{ display: "flex", alignItems: "center" }}></div>
     </div>
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;

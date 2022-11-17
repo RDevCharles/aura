@@ -13,7 +13,7 @@ export default function EventCard(props) {
                   style={{height:"8rem"}}
           component="img"
           height="70"
-          image={require("../assets/images/crystal.jpeg")}
+          image={require("../../assets/images/crystal.jpeg")}
           alt="green iguana"
         />
         <CardContent>

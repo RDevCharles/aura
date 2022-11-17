@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import EventCard from "../components/EventCard";
-import { getEvents } from "../utils/users-api";
+import EventCard from "./EventCard";
+import { getEvents } from "../../utils/users-api";
 
 export default function EventList() {
     const [eventsState, setEventsState] = useState([]);

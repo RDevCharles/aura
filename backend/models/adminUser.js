@@ -4,11 +4,10 @@ const Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
-
 const userAdminSchema = new Schema(
   {
-        brandName: { type: String, unique: true, required: true },
-        accountHolder: { type: String, required: true },
+    brandName: { type: String, unique: true, required: true },
+    accountHolder: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     password: {
       type: String,
@@ -21,24 +20,17 @@ const userAdminSchema = new Schema(
       zipCode: Number,
       state: String,
       city: String,
-        },
-    officeNumber: { type: String, required: true},
+    },
+    officeNumber: { type: String, required: true },
     gameId: { type: Schema.Types.ObjectId, required: true },
     websiteLink: { type: String, required: true },
-    monthlySiteVisit: { type: Number, default:0},
+    monthlySiteVisit: { type: Number, default: 0 },
 
-    //the about of spendably tokens a user has to paticipate in the game
+    customers: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  },
 
-        alerts: [AlertsModel],
-    // user admin will have a list of users that play their game
-    // need a static method for this to work
-    //virtuals can be used to display info to dashboard
-        customers:[{ type: Schema.Types.ObjectId, ref:"User"}]
-    },
-  
   { timestamps: true }
 );
-
 
 //must be pre save (kind of like middleware)
 userAdminSchema.pre("save", function (next) {

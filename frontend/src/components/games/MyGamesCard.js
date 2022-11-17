@@ -14,7 +14,7 @@ export default function MyGamesCard() {
                     style={{height:"9rem"}}
             component="img"
             height="20"
-            image={require("../assets/images/crystal.jpeg")}
+            image={require("../../assets/images/crystal.jpeg")}
             alt="green iguana"
           />
           <CardContent>

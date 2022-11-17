@@ -1,14 +1,18 @@
-import Container from 'react-bootstrap/Container';
+
+import React, { useRef, useState } from "react";
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { logout } from "../utils/users-service";
+import { logout } from "../../utils/users-service";
+
 
 function CollapsibleExample(props) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     
-        <Navbar.Brand style={{marginLeft:"2rem"}} href="/">Dashboard</Navbar.Brand>
+      <Navbar.Brand style={{ marginLeft: "2rem" }} href="/">Dashboard</Navbar.Brand>
+  
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav  className="me-auto">

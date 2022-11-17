@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import CoinButton from "../components/CoinButton";
+import CoinButton from "../ui/CoinButton";
 import { Link } from "react-router-dom";
 
 export default function GameCard(props) {

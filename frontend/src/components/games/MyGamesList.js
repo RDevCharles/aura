@@ -1,4 +1,4 @@
-import MyGamesCard from "../components/MyGamesCard";
+import MyGamesCard from "./MyGamesCard";
 
 export default function MyGamesList() {
     return (

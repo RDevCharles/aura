@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import * as GamesAPI from "../utils/games-api";
-import NavBar from "../components/NavBar"
-
-
-import GameCard from "../components/GameCard";
+import NavBar from "../components/ui/NavBar"
+import GameCard from "../components/games/GameCard";
 function Arcade(props) {
   const [gameTitles, setGameTitles] = useState([]);
 
