@@ -17,7 +17,7 @@ export default function EventList() {
   
   
     return (
-        <div>
+        <div style={{position: 'absolute', left: 0, top:"8rem"}}>
             <h1 style={{margin:"2rem 0rem 0rem 4rem"}}>Events</h1>
             {
             eventsState.map(event => {

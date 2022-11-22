@@ -16,16 +16,17 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar username={user.name} />
+     
       <Routes>
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/issues" element={<Issues/>} />
-        <Route
+        {/* <Route
           path="/"
           element={
             user ? <Dashboard user={user} /> : <UserAuth setUser={setUser} />
           }
-        />
+        /> */}
+        <Route path="/" element={<Games user={user} />} />
         <Route
           path="/profile-settings"
           element={<ProfileSettings user={user} />}

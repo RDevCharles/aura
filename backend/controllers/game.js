@@ -1,5 +1,4 @@
 const Game = require("../models/gameTitle");
-const User = require("../models/user");
 
 async function index(req, res) {
   try {
@@ -19,9 +18,6 @@ const create = (req, res) => {
     res.json(err.message);
   }
 };
-
-
-const pinGame = async (req, res) => {};
 
 module.exports = {
   index,

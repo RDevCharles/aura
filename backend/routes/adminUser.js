@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const adminUserCntrl = require("../controllers/adminUser");
 
-
 /* GET users listing. */
 
 //http://localhost:3001/get-user-data

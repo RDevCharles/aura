@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import * as GamesAPI from "../utils/games-api";
 import NavBar from "../components/ui/NavBar"
 import GameCard from "../components/games/GameCard";
+import HeaderAd from "../components/games/Ads/HeaderAd";
+import Events from "../components/events/EventList";
 function Arcade(props) {
   const [gameTitles, setGameTitles] = useState([]);
 
@@ -13,8 +15,14 @@ function Arcade(props) {
   }, []);
 
   return (
-      <div style={{ height:"100%", display: "flex", flexDirection: "column", backgroundColor: "#edf5f5"}}>
-          <NavBar username={props.user.name} />
+    <>
+    
+    <NavBar/>
+    <div style={{ height: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      
+      <HeaderAd />
+      <Events/>
+          {/* <NavBar username={props.user.name} /> */}
           <div  style={{display:"flex",flexDirection:"row"}}>
           {gameTitles.map((game) => {
         return (
@@ -24,7 +32,8 @@ function Arcade(props) {
               
           </div>
       
-    </div>
+      </div>
+      </>
   );
 }
 
