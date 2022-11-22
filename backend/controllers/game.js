@@ -20,17 +20,10 @@ const create = (req, res) => {
   }
 };
 
-async function purchGame(req, res) {
-  //console.log("hello from cntrl")
-  let user = await User.findOne({ username: req.body.username });
-  user.purchaseGame(req.body.cost, req.params.id);
-
-}
 
 const pinGame = async (req, res) => {};
 
 module.exports = {
   index,
   create,
-  purchGame,
 };

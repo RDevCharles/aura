@@ -49,28 +49,7 @@ const updateAddress = async (req, res) => {
   });
 };
 
-//function for taking tokens away from 
-const burn = async (req, res) => {
-  let user = await User.findOne({ name: "charles" });
-  // replace 25 with req.body.cost
-  user.burnTokens(25)
-  user.savGame(/* here goes the game id */)
-  res.send("purchased");
- 
-};
 
-async function reUp() {
-
-  try {
-    let user = await User.findOne({ name: "Charles" });
-    user.afterAdReUp(50)
-    
-  } catch (err) {
-    return err.message;
-  }
-
-  
-}
 
 const deleteGame = async (req, res) => {
   let user = await User.findOne({ name: "Ram" });
@@ -81,19 +60,12 @@ const deleteGame = async (req, res) => {
   //filter and remove game
 };
 
-//marks alerts from the server as seen
-
-// const markAlert = async (req, res) => {
-//   let user = await User.findOne({});
-//   user.updateOne({})
-
-// }
 
 module.exports = {
   create,
-  burn,
+
   updateAddress,
   deleteGame,
   login,
-  reUp
+ 
 };

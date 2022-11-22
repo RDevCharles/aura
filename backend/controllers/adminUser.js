@@ -68,15 +68,7 @@ async function getSiteVisits(req, res) {
 
 }
 
-//filter and remove game
 
-//marks alerts from the server as seen
-
-// const markAlert = async (req, res) => {
-//   let user = await User.findOne({});
-//   user.updateOne({})
-
-// }
 
 module.exports = {
   updateAddress,

@@ -14,7 +14,6 @@ const gameSchema = new Schema({
     linkClicks: { type: Number },
     views: { type:Number},
     description: { type: String, required: true },
-    cost: { type: Number, required: true },
     gameCategory: { type: String, required: true},
     viewed:{type: Boolean, default: false},
 })

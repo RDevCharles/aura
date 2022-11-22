@@ -43,10 +43,6 @@ const userSchema = new Schema(
 
     // the interest stream will hold dynamic data like a feed
     purchasedGames: [{ type: Schema.Types.ObjectId, ref: "Game" }],
-
-    //the about of spendably tokens a user has to paticipate in the game
-    tokens: { type: Number, default: 1000 },
-    tokenReload: { type: Date, default: new Date() },
     alerts: [AlertsModel],
   },
   { timestamps: true }
@@ -56,32 +52,7 @@ const userSchema = new Schema(
 //                              Game play methods                                    //
 ///////////////////////////////////////////////////////////////////////////////////////
 
-userSchema.methods.burnTokens = function (cost, gameResId) {
-  // this helper function helps to see if the game is already in the purchased games list
-
-  function gameIdCheck(gameId) {
-    return gameId == gameResId;
-  }
-
-  let result = this.purchasedGames.filter(gameIdCheck);
-
-  //if the list already has the game id inside return null
-  //posibly change that to return some sort of json object
-
-  if (result) return null;
-
-  //if the dont have enough for game do nothing
-  //posibly change that to return some sort of json object
-  if (cost > this.token) return null;
-  this.tokens -= cost;
-  return this.save();
-};
-
 //function to add tokens to user account after an ad was viewed
-userSchema.methods.afterAdReUp = function (cost) {
-  this.tokens += cost;
-  return this.save();
-};
 
 userSchema.methods.saveGame = function (gameResId) {
   function gameIdCheck(gameId) {
